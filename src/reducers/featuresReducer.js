@@ -1,5 +1,10 @@
 import * as types from "../actions/actionTypes";
 
+// (1) DESIGN APP STATE: this app has an initial state of an object with information on a car we are buying.
+// There is a base price for the car itself, an array of objects representing additional extras we can buy,
+// and the total price of those additional features. Since this state object has been made for us, all we need
+// to do is remember to pass it in to the reducer we're going to make, like this: state = initialState.
+
 const initialState = {
   additionalPrice: 0,
   car: {
@@ -17,6 +22,10 @@ const initialState = {
   ]
 };
 
+// (3) CREATE ONE REDUCER FUNCTION PER SLICE OF STATE: here we only have one slice of state, so create one
+// reducer function to deal with our car features initialState object. This reducer function takes in the actions
+// we just created, and returns a new modified state object depending on the action.
+
 export function featuresReducer(state = initialState, action) {
   switch (action.type) {
     default:
@@ -26,7 +35,13 @@ export function featuresReducer(state = initialState, action) {
         ...state,
         car: {
           ...state.car,
-          features: [...state.car.features, action.payload]
+          features: [...state.car.features, action.payload].filter(
+            (item, index, self) => {
+              return self.indexOf(item) === index;
+            }
+          ),
+          price: state.car.price +
+            state.car.features.reduce((acc, cur) => acc.price + cur.price, 0)
         }
       };
     case types.REMOVE_ITEM:

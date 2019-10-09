@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
+
 const Total = props => {
   return (
     <div className="content">
