@@ -34,7 +34,7 @@ export function featuresReducer(state = initialState, action) {
           ...state,
           car: {
             ...state.car,
-            features: state.car.features.filter(previousFeature => previousFeature !== action.payload.feature)
+            features: state.car.features.filter(item => item.id !== action.payload.id)
           }
         }
     }
