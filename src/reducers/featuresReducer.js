@@ -1,4 +1,4 @@
-import * as types from '../actions/actionTypes'
+import * as types from "../actions/actionTypes";
 
 const initialState = {
   additionalPrice: 0,
@@ -18,24 +18,26 @@ const initialState = {
 };
 
 export function featuresReducer(state = initialState, action) {
-    switch(action.type) {
-      default:
-        return state;
-      case types.BUY_ITEM:
-        return {
-          ...state,
-          car: {
-            ...state.car,
-            features: [...state.car.features, action.payload]
-          }
+  switch (action.type) {
+    default:
+      return state;
+    case types.BUY_ITEM:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [...state.car.features, action.payload]
         }
-      case types.REMOVE_ITEM:
-        return {
-          ...state,
-          car: {
-            ...state.car,
-            features: state.car.features.filter(item => item.id !== action.payload.id)
-          }
+      };
+    case types.REMOVE_ITEM:
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: state.car.features.filter(
+            item => item.id !== action.payload.id
+          )
         }
-    }
+      };
   }
+}
