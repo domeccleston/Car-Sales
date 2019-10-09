@@ -1,15 +1,15 @@
 import * as types from './actionTypes';
 
-const buyItem = item => {
+export const buyItem = item => {
     return {
         type: types.BUY_ITEM,
         payload: item
     }
 }
 
-const removeItem = item => {
+export const removeItem = item => {
     return {
-        type: types.REMOVE_IT,
+        type: types.REMOVE_ITEM,
         payload: item
     }
 }

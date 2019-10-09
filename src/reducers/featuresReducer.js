@@ -32,10 +32,10 @@ export function featuresReducer(state = initialState, action) {
       case types.REMOVE_ITEM:
         return {
           ...state,
-          features: [
-            ...state.features.slice(0, state.features.indexOf(action.payload)),
-            ...state.features.slice(state.features.indexOf(action.payload) + 1)
-          ]
+          car: {
+            ...state.car,
+            features: state.car.features.filter(previousFeature => previousFeature !== action.payload.feature)
+          }
         }
     }
   }
