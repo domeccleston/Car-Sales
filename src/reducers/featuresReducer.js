@@ -40,8 +40,7 @@ export function featuresReducer(state = initialState, action) {
               return self.indexOf(item) === index;
             }
           ),
-          price: state.car.price +
-            state.car.features.reduce((acc, cur) => acc.price + cur.price, 0)
+          price: state.car.price + action.payload.price
         }
       };
     case types.REMOVE_ITEM:
@@ -51,7 +50,8 @@ export function featuresReducer(state = initialState, action) {
           ...state.car,
           features: state.car.features.filter(
             item => item.id !== action.payload.id
-          )
+          ),
+          price: state.car.price - action.payload.price
         }
       };
   }
