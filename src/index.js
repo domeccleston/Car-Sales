@@ -4,6 +4,7 @@ import App from "./App";
 import { featuresReducer } from "./reducers/featuresReducer";
 import { combineReducers, createStore } from "redux";
 import { Provider } from "react-redux";
+import { BrowserRouter as Router } from 'react-router-dom';
 import "bulma/css/bulma.css";
 import "./styles.scss";
  
@@ -26,8 +27,10 @@ const store = createStore(featuresReducer);
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <Router>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Router>,
   rootElement
 );
