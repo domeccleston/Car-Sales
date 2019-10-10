@@ -10,7 +10,7 @@ const initialStore = [
   { id: 2, name: "Racing detail package", price: 1500 },
   { id: 3, name: "Premium sound system", price: 500 },
   { id: 4, name: "Rear spoiler", price: 250 }
-] 
+];
 
 const initialPriceTotal = 0;
 
@@ -20,7 +20,7 @@ const initialCar = {
   image:
     "https://cdn.motor1.com/images/mgl/0AN2V/s1/2019-ford-mustang-bullitt.jpg",
   features: []
-}
+};
 
 const initialState = {
   additionalPrice: 0,
@@ -43,7 +43,30 @@ const initialState = {
 // reducer function to deal with our car features initialState object. This reducer function takes in the actions
 // we just created, and returns a new modified state object depending on the action.
 
-export function featuresReducer(state = {car: initialCar, price: initialPriceTotal, store: initialStore}, action) {
+/* export function carReducer(state = initialCar, action) {
+  switch (action.type) {
+    case types.REMOVE_ITEM:
+      return {
+        ...state,
+        features: state.features.filter(item => item.id !== action.payload.id),
+        price: state.price - action.payload.price
+      };
+    case types.BUY_ITEM:
+      return {
+        ...state,
+        features: [...state.features, action.payload].filter(
+          (item, index, self) => {
+            return self.indexOf(item) === index;
+          }
+        ),
+        price: state.price + action.payload.price
+      };
+    default:
+      return state;
+  }
+} */
+
+export function featuresReducer(state = initialState, action) {
   switch (action.type) {
     default:
       return state;
@@ -57,8 +80,9 @@ export function featuresReducer(state = {car: initialCar, price: initialPriceTot
               return self.indexOf(item) === index;
             }
           ),
-          price: state.car.price + action.payload.price
-        }
+          //price: state.car.price + action.payload.price
+        },
+        additionalPrice: state.car.price + action.payload.price
       };
     case types.REMOVE_ITEM:
       return {

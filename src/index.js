@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { featuresReducer } from "./reducers/featuresReducer";
+import { combineReducers } from "redux"
 import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router } from 'react-router-dom';
@@ -14,9 +15,9 @@ import "./styles.scss";
 // add more in future. Create a 'monster' reducer to combine them.
 
 /* const monsterReducer = combineReducers({
-    features: featuresReducer
-}) */
-
+    featuresReducer: featuresReducer
+})
+ */
 // (5) USE CREATESTORE TO CREATE A STORE: pass our reducer in to the redux createStore function. This should
 // be our combined monsterReducer
 
